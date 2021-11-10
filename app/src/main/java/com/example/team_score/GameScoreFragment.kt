@@ -24,6 +24,10 @@ class GameScoreFragment : Fragment() {
         _binding = FragmentGameScoreBinding.inflate(inflater,container,false)
         return _binding?.root
     }
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("GameFragment", "GameFragment destroyed!")
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -40,10 +44,7 @@ class GameScoreFragment : Fragment() {
         binding?.score?.text=viewmodel.score.toString()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("GameFragment", "GameFragment destroyed!")
-    }
+
 
 
 
