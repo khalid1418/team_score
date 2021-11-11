@@ -2,4 +2,8 @@
     <string name="app_name">team_score</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="scored">%d</string>
+    <string name="plus_one">Plus one</string>
+    <string name="menus_two">menus two</string>
+    <string name="plus_four">plus four</string>
 </resources>

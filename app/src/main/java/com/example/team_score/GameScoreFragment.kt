@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.example.team_score.databinding.FragmentGameScoreBinding
 
@@ -13,7 +14,7 @@ import com.example.team_score.databinding.FragmentGameScoreBinding
 class GameScoreFragment : Fragment() {
     private var _binding: FragmentGameScoreBinding? = null
     val binding get() = _binding
-    private val viewmodel:ScoreViewModel by viewModels()
+    private val viewmodel: ScoreViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -21,30 +22,33 @@ class GameScoreFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentGameScoreBinding.inflate(inflater,container,false)
+        _binding = DataBindingUtil.inflate(inflater,R.layout.fragment_game_score ,container, false)
         return _binding?.root
     }
-//    override fun onDetach() {
-//        super.onDetach()
-//        Log.d("GameFragment", "GameFragment destroyed!")
-//    }
+
+    override fun onDetach() {
+        super.onDetach()
+        Log.d("GameFragment", "GameFragment destroyed!")
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-scorechange()
-        binding?.Buttonplusone?.setOnClickListener { viewmodel.Plus()
-        scorechange()}
-        binding?.buttonplus4?.setOnClickListener { viewmodel.plus2()
-        scorechange()}
+        binding?.scoreviewmodel = viewmodel
+        binding?.lifecycleOwner = viewLifecycleOwner
+
+
+        binding?.Buttonplusone?.setOnClickListener {
+            viewmodel.Plus()
+        }
+        binding?.buttonplus4?.setOnClickListener {
+            viewmodel.plus2()
+
+        }
         binding?.buttonsubtracttwo?.setOnClickListener {
             viewmodel.subtract()
-        scorechange()}
+
+        }
+
     }
-
-     fun scorechange(){
-        binding?.score?.text=viewmodel.score.toString()
-    }
-
-
 
 
 

@@ -1,40 +1,31 @@
 package com.example.team_score
 
-import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class ScoreViewModel: ViewModel() {
 
-    private var _score = 0
+    private val _score = MutableLiveData(0)
 
-    val score:Int get() = _score
-    init {
-        Log.d("GameFragment","GameViewModel created")
-        score
+    val score:LiveData<Int> get() = _score
 
-
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Log.d("GameFragment", "GameviewModel destroyed")
-    }
 
 
 
      fun Plus(){
-       var score1= _score ++
+         _score.value = _score.value?.plus(1)
     }
      fun plus2(){
-        _score +=4
+        _score.value = _score.value?.plus(4)
     }
      fun subtract(){
-        if (_score==0){
-            _score = 0
-        }else if (_score  == 1){
-            _score = 0
+        if (_score.value!! <=0){
+            _score.value = 0
+        }else if (_score.value  == 1){
+            _score .value= 0
 
-        }else _score -=2
+        }else _score.value = _score.value?.minus(2)
     }
 
 
