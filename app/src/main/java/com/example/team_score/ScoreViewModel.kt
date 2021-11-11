@@ -10,6 +10,7 @@ class ScoreViewModel: ViewModel() {
     val score:Int get() = _score
     init {
         Log.d("GameFragment","GameViewModel created")
+        score
 
 
     }

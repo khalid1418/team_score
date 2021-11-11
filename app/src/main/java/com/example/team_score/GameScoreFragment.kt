@@ -24,13 +24,13 @@ class GameScoreFragment : Fragment() {
         _binding = FragmentGameScoreBinding.inflate(inflater,container,false)
         return _binding?.root
     }
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("GameFragment", "GameFragment destroyed!")
-    }
+//    override fun onDetach() {
+//        super.onDetach()
+//        Log.d("GameFragment", "GameFragment destroyed!")
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
+scorechange()
         binding?.Buttonplusone?.setOnClickListener { viewmodel.Plus()
         scorechange()}
         binding?.buttonplus4?.setOnClickListener { viewmodel.plus2()
